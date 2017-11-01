@@ -16,9 +16,41 @@
 			<div class="col-md-12">
 				<h1>My first  bootstrap</h1>
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addMember">
-						Submit
+						Add Member
 					</button>
-					<button type="button" class="btn">cancel</button>
+					
+					
+					<?php
+					require('retive.php');
+					?>
+					
+					<table class="table">
+						<tr>
+							<th>Seq.</th>
+							<th> id</th>
+							<th> fname</th>
+							<th>lname </th>
+							<th>contact </th>
+						</tr>
+						<?php
+							
+							$x=1;
+							foreach($data as $row){
+						?>
+						
+						<tr>
+							<td> <?php echo $x; ?></td>
+							<td> <?php echo $row[0]; ?></td>
+							<td> <?php echo $row[1]; ?></td>
+							<td> <?php echo $row[2]; ?></td>
+							<td> <?php echo $row[3]; ?></td>
+						</tr>
+						<?php
+							$x++;
+						}
+						?>
+						
+					</table>
 			</div>
 		</div>
 	</div>
@@ -26,15 +58,24 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					Modal Header
+					Please Input Member Data
 				</div>
-				</div>
+				
+				
+			<form method="POST" action="create.php">
 				<div class="modal-body">
-					Modal Body
+					Id:<input type="text" name="id"><br>
+					Fname:<input type="text" name='fname'><br>
+					Lname:<input type="text" name='lname'><br>
+					Contect:<input type="text" name='contect'><br>
 				</div>
+			
 				<div class="modal-footer">
-					modal Footer
+					<input type="Submit" value="Submit">
+					<input type="Reset" value="Reset">
 				</div>
+			</form>
+			</div>
 			</div>
 		</div>
 	</div>
