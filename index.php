@@ -31,6 +31,7 @@
 							<th> fname</th>
 							<th>lname </th>
 							<th>contact </th>
+							<th>Operator</th>
 						</tr>
 						<?php
 							
@@ -44,6 +45,10 @@
 							<td> <?php echo $row[1]; ?></td>
 							<td> <?php echo $row[2]; ?></td>
 							<td> <?php echo $row[3]; ?></td>
+							<td>
+								<button type="button" class="btn btn-warning"> Edit</button>
+								<button type="button" class="btn btn-danger" onclick="deleteMember(<?php echo $row[0]; ?>)">Delete</button>
+							</td>
 						</tr>
 						<?php
 							$x++;
@@ -62,17 +67,43 @@
 				</div>
 				
 				
-			<form method="POST" action="create.php">
+			<form class="form-horiaontal" method="POST" action="create.php">
 				<div class="modal-body">
-					Id:<input type="text" name="id"><br>
-					Fname:<input type="text" name='fname'><br>
-					Lname:<input type="text" name='lname'><br>
-					Contect:<input type="text" name='contect'><br>
+					<div class="form-group">
+					<label class="col-md-12 control-label">Id: </label>
+					<div class="col-sm-10">
+					<input class="form-control" type="text" name="id">
+					</div>
+					</div>
+					
+				<div class="form-group">
+					<label class="col-md-12 control-label">Fname: </label>
+					<div class="col-sm-10">
+					<input class="form-control" type="text" name="id">
+					</div>
+					</div>
+					<div class="form-group">
+					<label class="col-md-12 control-label">Lname: </label>
+					<div class="col-sm-10">
+					<input class="form-control" type="text" name="id">
+					</div>
+					</div>
+					<div class="form-group">
+					<label class="col-md-12 control-label">contact: </label>
+					<div class="col-sm-10">
+					<input class="form-control" type="text" name="id">
+					</div>
+					</div>
 				</div>
 			
+			
 				<div class="modal-footer">
+				<div class="col-sm-10">
 					<input type="Submit" value="Submit">
+					</div>
+					<div class="col-sm-10">
 					<input type="Reset" value="Reset">
+					</div>
 				</div>
 			</form>
 			</div>
@@ -86,7 +117,29 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<!-- datatables js -->
 	<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
+	<script type="text/javascript">
+	function deleteMember(id){
+		//alert(id);
+		$.ajax({
+			url:'delete.php',
+			type:'POST',
+			data:{mid:id},
+			success:function(response){
+				
+					alert('deleted');
+					window.location.replace("http://localhost/crud/index.php");
+				
+			}
+		});
+	}
+	</script>
+	
+	
+	
+	
+	
+	
+	
 	
 
 </body>
